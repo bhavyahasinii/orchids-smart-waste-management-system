@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,7 +13,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   setLoading(true);
 
@@ -44,7 +44,8 @@ export default function LoginPage() {
 };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 px-4 dark:bg-zinc-950">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-400 to-blue-500">
+  <div className="bg-white p-8 rounded-xl shadow-lg w-96"></div>
       <Card className="w-full max-w-md border-2">
         <CardHeader className="text-center">
           <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">
@@ -71,11 +72,15 @@ export default function LoginPage() {
               </div>
             </div>
           </CardContent>
-          <CardFooter>
-            <Button className="w-full" type="submit" disabled={loading}>
-              {loading ? "Authenticating..." : "Login"}
-            </Button>
-          </CardFooter>
+<CardFooter>
+  <button
+    type="submit"
+    className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700"
+    disabled={loading}
+  >
+    Login
+  </button>
+</CardFooter>
         </form>
       </Card>
     </div>

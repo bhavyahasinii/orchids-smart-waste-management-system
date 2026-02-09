@@ -1,7 +1,15 @@
-const express = require('express');
+import express from "express";
+
 const router = express.Router();
-const { login } = require('../controllers/authController');
 
-router.post('/login', login);
+router.post("/login", (req, res) => {
+  const { username, password } = req.body;
 
-module.exports = router;
+  if (username === "admin" && password === "admin123") {
+    return res.json({ success: true });
+  }
+
+  return res.status(401).json({ success: false });
+});
+
+export default router;
