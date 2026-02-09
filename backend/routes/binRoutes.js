@@ -6,7 +6,7 @@ const router = express.Router();
 router.post("/update", async (req, res) => {
   try {
     const data = req.body;
-
+//temp
     // If single object, convert to array
     const bins = Array.isArray(data) ? data : [data];
 
